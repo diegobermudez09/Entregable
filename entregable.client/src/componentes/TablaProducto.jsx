@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
-import { Table, Button } from 'reactstrap';
-import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import { Table, Button, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 const TablaProducto = ({ data, setEditar, mostrarModal, setMostrarModal, eliminarProducto }) => {
-    const [currentPage, setCurrentPage] = useState(1);
-    const productosPorPagina = 5;
+    const [currentPage, setCurrentPage] = useState(1); // Estado para la página actual de la paginación
+    const productosPorPagina = 5; // Número de productos por página
 
+    // Calcula los índices para mostrar los productos actuales en la página
     const indexOfLastProducto = currentPage * productosPorPagina;
     const indexOfFirstProducto = indexOfLastProducto - productosPorPagina;
     const productosActuales = data.slice(indexOfFirstProducto, indexOfLastProducto);
 
-    const enviarDatos = (contacto) => {
-        setEditar(contacto);
+    // Maneja la edición de un producto y muestra el modal
+    const enviarDatos = (producto) => {
+        setEditar(producto);
         setMostrarModal(!mostrarModal);
     };
 
+    // Cambia la página actual
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
@@ -25,19 +27,18 @@ const TablaProducto = ({ data, setEditar, mostrarModal, setMostrarModal, elimina
                         <th>Producto</th>
                         <th>Precio</th>
                         <th>Acciones</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     {productosActuales.length < 1 ? (
                         <tr>
-                            <td colSpan="4">Sin Registros</td>
+                            <td colSpan="3">Sin Registros</td>
                         </tr>
                     ) : (
                         productosActuales.map((item) => (
                             <tr key={item.id}>
                                 <td>{item.nombre}</td>
-                                <td>{item.precio}</td>
+                                <td>S/.{item.precio}</td>
                                 <td>
                                     <Button color="primary" size="sm" className="me-2" onClick={() => enviarDatos(item)}>Editar</Button>
                                     <Button color="danger" size="sm" onClick={() => eliminarProducto(item.id)}>Eliminar</Button>
