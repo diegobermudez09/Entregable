@@ -9,6 +9,7 @@ const modeloProducto = {
 
 const ModalProducto = ({ mostrarModal, setMostrarModal, guardarProducto, editar, setEditar, editarProducto }) => {
     const [producto, setProducto] = useState(modeloProducto);
+    const [formularioValido, setFormularioValido] = useState(false); // Estado para la validación del formulario
 
     const actualizarDato = (e) => {
         console.log(e.target.name + " : " + e.target.value);
@@ -25,7 +26,7 @@ const ModalProducto = ({ mostrarModal, setMostrarModal, guardarProducto, editar,
             editarProducto(producto);
         }
 
-        setProducto(modeloProducto)
+        setProducto(modeloProducto);
     };
 
     useEffect(() => {
@@ -36,9 +37,19 @@ const ModalProducto = ({ mostrarModal, setMostrarModal, guardarProducto, editar,
         }
     }, [editar]);
 
+    useEffect(() => {
+        // Validar si ambos campos están llenos para habilitar el botón de guardar
+        if (producto.nombre !== "" && producto.precio !== "" && producto.precio > 0) {
+            setFormularioValido(true);
+        } else {
+            setFormularioValido(false);
+        }
+    }, [producto]);
+
     const cerrarModal = () => {
         setMostrarModal(false); // Cambiado a false para cerrar el modal
         setEditar(null);
+        setProducto(modeloProducto);
     };
 
     return (
@@ -54,14 +65,14 @@ const ModalProducto = ({ mostrarModal, setMostrarModal, guardarProducto, editar,
                     </FormGroup>
                     <FormGroup>
                         <Label>Precio del Producto</Label>
-                        <Input name="precio" onChange={(e) => actualizarDato(e)} value={producto.precio} />
+                        <Input type="number" name="precio" onChange={(e) => actualizarDato(e)} value={producto.precio} />
                     </FormGroup>
                 </Form>
             </ModalBody>
 
             <ModalFooter>
-                <Button color="primary" size="sm" onClick={enviarDatos}>Guardar</Button>
-                <Button color="danger" size="sm" onClick={cerrarModal}>Cerrar</Button> 
+                <Button color="primary" size="sm" onClick={enviarDatos} disabled={!formularioValido}>Guardar</Button>
+                <Button color="danger" size="sm" onClick={cerrarModal}>Cerrar</Button>
             </ModalFooter>
         </Modal>
     );

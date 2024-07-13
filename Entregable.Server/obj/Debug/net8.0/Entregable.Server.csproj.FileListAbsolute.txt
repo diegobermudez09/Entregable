@@ -137,3 +137,4 @@ C:\Users\DIEGO\source\repos\Entregable\Entregable.Server\obj\Debug\net8.0\refint
 C:\Users\DIEGO\source\repos\Entregable\Entregable.Server\obj\Debug\net8.0\Entregable.Server.pdb
 C:\Users\DIEGO\source\repos\Entregable\Entregable.Server\obj\Debug\net8.0\Entregable.Server.genruntimeconfig.cache
 C:\Users\DIEGO\source\repos\Entregable\Entregable.Server\obj\Debug\net8.0\ref\Entregable.Server.dll
+C:\Users\DIEGO\source\repos\Entregable\Entregable.Server\obj\Debug\net8.0\Entregable.Server.sourcelink.json
