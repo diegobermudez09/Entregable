@@ -1,7 +1,14 @@
 import React from 'react';
 import { Table, Button } from 'reactstrap';
 
-const TablaProducto = ({ data }) => {
+const TablaProducto = ({ data, setEditar, mostrarModal, setMostrarModal, eliminarProducto }) => {
+
+
+    const enviarDatos = (contacto) => {
+        setEditar(contacto)
+        setMostrarModal(!mostrarModal)
+    }
+
     return (
         <Table striped responsive>
             <thead>
@@ -21,12 +28,11 @@ const TablaProducto = ({ data }) => {
                     ) : (
                         data.map((item) => (
                             <tr key={item.id}>
-                              
                                 <td>{item.nombre}</td>
                                 <td>{item.precio}</td>
                                 <td>
-                                    <Button color="primary" size="sm" className="me-2">Editar</Button>
-                                    <Button color="danger" size="sm">Eliminar</Button>
+                                    <Button color="primary" size="sm" className="me-2" onClick={() => enviarDatos(item)}>Editar</Button>
+                                    <Button color="danger" size="sm" onClick={() => eliminarProducto(item.id) }>Eliminar</Button>
                                 </td>
                             </tr>
                         ))

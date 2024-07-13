@@ -6,8 +6,9 @@ import ModalProducto from './componentes/ModalProducto';
 
 const App = () => {
 
-    const [productos, setProductos] = useState([])
-    const [mostrarModal, setMostrarModal] = useState(false)
+    const [productos, setProductos] = useState([]);
+    const [mostrarModal, setMostrarModal] = useState(false);
+    const [editar, setEditar] = useState(null);
 
 
     const mostrarProductos = async () => {
@@ -42,6 +43,39 @@ const App = () => {
     } 
 
 
+    const editarProducto = async (producto) => {
+
+        const response = await fetch("api/producto/Editar", {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(producto)
+        })
+        if (response.ok) {
+            setMostrarModal(!mostrarModal);
+            mostrarProductos();
+        }
+    } 
+
+    const eliminarProducto = async (id) => {
+
+        var respuesta = window.confirm("desea eliminar el producto?")
+
+        if (!respuesta) {
+            return;
+        }
+
+        const response = await fetch("api/producto/Eliminar/" + id, {
+            method: 'DELETE',
+        } )
+        
+        if (response.ok) {
+            mostrarProductos();
+        }
+    } 
+
+
     return (
         <Container>
             <Row className="mt-5">
@@ -53,7 +87,14 @@ const App = () => {
                         <CardBody>
                             <Button size="sm" color="success" onClick={ () => setMostrarModal(!mostrarModal)}>Nuevo Producto</Button>
                             <hr />
-                            <TablaProducto data={productos} /> {/* Aquí se utiliza el componente TablaProducto */}
+                            <TablaProducto data={productos}
+                                setEditar={setEditar}
+                                mostrarModal={mostrarModal}
+                                setMostrarModal={setMostrarModal}
+
+                                eliminarProducto={eliminarProducto}
+                                
+                            /> 
                         </CardBody>
                     </Card>
                 </Col>
@@ -63,8 +104,11 @@ const App = () => {
                 mostrarModal={mostrarModal}
 
                 setMostrarModal={setMostrarModal}
+                guardarProducto={guardarProducto}
 
-                guardarProducto={guardarProducto }
+                editar={editar}
+                setEditar={setEditar}
+                editarProducto={editarProducto}
             />
         </Container>
     );
