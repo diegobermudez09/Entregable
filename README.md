@@ -15,11 +15,11 @@
 ###  Configurar la Base de Datos
 
 - Navega a la carpeta donde se clonó el proyecto.
-- Encuentra el archivo .txt que contiene el código SQL de la base de datos.
+- Encuentra el archivo "pruebaEntrada" que contiene el código SQL de la base de datos.
 - Abre SQL Server Management Studio (SSMS).
 - Conéctate a tu instancia de SQL Server.
 - Abre una nueva consulta.
-- Copia y pega todo el código SQL del archivo .txt en la nueva consulta.
+- Copia y pega todo el código SQL del archivo "pruebaEntrada" en la nueva consulta.
 - Ejecuta la consulta para crear la base de datos.
 
 ###   Compilar y Ejecutar el Proyecto
