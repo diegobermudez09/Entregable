@@ -3,6 +3,7 @@
 
 ![](https://github.com/diegobermudez09/Entregable/blob/main/Sistema.png)
 
+https://github.com/diegobermudez09/Entregable/blob/main/pruebaEntrada.mp4
 ## Para presentar y ejecutar el proyecto, sigue estos pasos de manera clara y organizada:
 
 ###  Clonar el Repositorio desde GitHub
