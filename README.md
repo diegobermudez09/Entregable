@@ -1,7 +1,11 @@
 
 # Instrucciones de Configuración y Ejecución del Proyecto
 
-![](https://github.com/diegobermudez09/Entregable/blob/main/Sistema.png)
+![](https://github.com/diegobermudez09/Entregable/blob/main/imagenesSistema/vistasSistema.png)
+![](https://github.com/diegobermudez09/Entregable/blob/main/imagenesSistema/agregarSistema.png)
+![](https://github.com/diegobermudez09/Entregable/blob/main/imagenesSistema/EditarSistema.png)
+![](https://github.com/diegobermudez09/Entregable/blob/main/imagenesSistema/eliminarSistema.png)
+
 
 ## Para presentar y ejecutar el proyecto, sigue estos pasos de manera clara y organizada:
 
